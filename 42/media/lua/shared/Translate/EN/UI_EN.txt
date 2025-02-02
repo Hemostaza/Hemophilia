@@ -1,0 +1,9 @@
+UI_PL = {
+ 
+	-- Bleeding traits	
+	UI_trait_hemophilialite = "Hemophilia A (1-5%)",
+	UI_trait_hemophiliadesclite = "Hemophilia A, moderate form<br>Bleeding lasts a very long time.<br>The Factor VIII accelerates healing",
+	UI_trait_hemophiliasevere = "Hemophilia A (<1%)",
+	UI_trait_hemophiliadescsevere = "Hemophilia A, severe form<br>Bleeding will not stop without Factor VIII administration",
+
+}

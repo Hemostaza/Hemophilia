@@ -1,0 +1,3 @@
+Tooltip_PL = {
+    Tooltip_FactorVIII = "Kit for the administration of factor VIII, needed for blood coagulation.<br>Instructions for preparation and administration are included in the package.",
+}

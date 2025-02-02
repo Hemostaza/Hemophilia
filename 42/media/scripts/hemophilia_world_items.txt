@@ -1,0 +1,10 @@
+module Base
+{
+	model FactorVIII_Ground
+    	{
+   		mesh = WorldItems/Clothing/PlasticLunchBox_Ground,
+		texture = WorldItem/Factor_VIII,
+    		scale = 0.25,
+    	}
+
+}

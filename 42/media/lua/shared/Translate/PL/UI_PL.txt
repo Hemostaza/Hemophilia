@@ -1,0 +1,9 @@
+UI_PL = {
+ 
+	-- Bleeding traits	
+	UI_trait_hemophilialite = "Hemofilia A (1-5%)",
+	UI_trait_hemophiliadesclite = "Hemofilia A, postać umiarkowana<br>Krawienie utrzymuje się bardzo długo.<br>Czynnik VIII przyspiesza leczenie",
+	UI_trait_hemophiliasevere = "Hemofilia A (<1%)",
+	UI_trait_hemophiliadescsevere = "Hemofilia A, postać ciężka<br>Bez podania Czynnika VIII krwawienie nie ustanie",
+ 
+}

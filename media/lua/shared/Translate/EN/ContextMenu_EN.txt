@@ -1,0 +1,3 @@
+ContextMenu_EN = {
+	ContextMenu_take_factorviii = "Give yourself an injection",
+}

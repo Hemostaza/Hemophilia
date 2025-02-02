@@ -1,0 +1,9 @@
+UI_RU = {
+ 
+	-- Bleeding traits	
+	UI_trait_hemophilialite = "Гемофилия A (1-5%)",
+	UI_trait_hemophiliadesclite = "Гемофилия A, умеренная форма<br>Кровотечение длится очень долго.<br>Фактор VIII ускоряет заживление.",
+	UI_trait_hemophiliasevere = "Гемофилия A (<1%)",
+	UI_trait_hemophiliadescsevere = "Гемофилия A, тяжёлая форма<br>Кровотечение не остановится без введения фактора VIII.",
+
+}

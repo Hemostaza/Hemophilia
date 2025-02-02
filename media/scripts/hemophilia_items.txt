@@ -1,0 +1,20 @@
+module Hemophilia{
+imports{
+	Base
+	}
+	
+	item FactorVIII{
+		DisplayCategory = FirstAid,
+		weight = 0.2,
+		type = Normal,
+		DisplayName = Factor VIII,
+		Medical = TRUE,
+		StaticModel = FactorVIII_Ground,
+		WorldStaticModel = FactorVIII_Ground,
+		CantBeFrozen = TRUE,
+		EatType				= popcan,
+		Tooltip = Tooltip_FactorVIII,
+		CustomContextMenu = take_factorviii,
+		Icon	=	IconFactorVIII,
+	}
+}
