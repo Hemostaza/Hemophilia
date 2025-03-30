@@ -42,9 +42,9 @@ local function AchilleaBandageOn(bodyParts)
         if isWounded(bodyPart) then
             if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
                 local rand = ZombRand(1, 100);
-                local bleedingTime = bodyPart:getBleedingTime() - rand/150;
+                local bleedingTime = bodyPart:getBleedingTime() - rand / 150;
                 bodyPart:setBleedingTime(bleedingTime)
-                setWoundTime(bodyPart, -rand/150);
+                setWoundTime(bodyPart, -rand / 150);
             end
         end
     end
@@ -64,7 +64,7 @@ local function hemophiliaBleedingTime()
             local factorVIIIHours = playerdata.FactorVIIIHours;
             local bodyParts = bodydamage:getBodyParts();
             -- Jak jest podany czynnik to w chuju cały ten proces niżej pierdolić
-            if factorVIIIHours > 0 then
+            if factorVIIIHours > 22 then
                 return
             end
             -- im mniejszy multipler tym wiekszy random krwawienia.
@@ -72,10 +72,10 @@ local function hemophiliaBleedingTime()
             if player:HasTrait("HemophiliaSevere") then
                 multipler = 35;
             end
-            
+
             if player:isFemale() then
-                multipler = multipler * 2;
-                --print("Ło kurwa baba lol");
+                multipler = multipler * 1.65;
+                -- print("Ło kurwa baba lol");
             end
             -- print(bodyParts:size());
             -- sprawdź najpierw czy pędzel w ogóle krwawi kurwa mać reloaduj sie
@@ -83,15 +83,15 @@ local function hemophiliaBleedingTime()
                 local bodyPart = bodyParts:get(bodyPartIndex)
                 -- sprawdź czy jest obrażenie jakeis na konczynie
                 if isWounded(bodyPart) then
-                    
+
                     if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
-                        --print("bandaż z chujem");
+                        -- print("bandaż z chujem");
                         multipler = multipler * 3;
                     end
                     -- jak ma bandaż z krwawnika to mnozy multipler za 3
 
                     -- sprawdź czy już nie krwawi
-                    if (bodyPart:getBleedingTime() <= 0) then
+                    if bodyPart:getBleedingTime() <= 0 and factorVIIIHours <= 0 then
                         -- print("Uszkodzenie kutasa poziom over 9999");
                         -- Możliwość ponownego otwarcia ran i chuj xD
                         local rand = ZombRand(-100, 100);
@@ -106,6 +106,9 @@ local function hemophiliaBleedingTime()
                     if bodyPart:getBleedingTime() > 0 then
                         -- losowa liczba dodana do czasu krwawienia podzielona przez mocność hemofilii
                         local rand = ZombRand(3, 15) / multipler;
+                        if factorVIIIHours > 0 then
+                            rand = rand / 2;
+                        end
                         -- print("Wydłużenie czasu krwawienia o ", rand)
                         local bleedingTime = bodyPart:getBleedingTime() + rand;
                         -- ustawienie tego w kończynie
@@ -123,7 +126,7 @@ end
 
 function takeFactorVIII(player)
     local playerdata = player:getModData();
-    playerdata.FactorVIIIHours = ZombRand(22, 26);
+    playerdata.FactorVIIIHours = ZombRand(40, 44);
 end
 
 local function factorreduction()
