@@ -1,3 +1,4 @@
-Tooltip_PL = {
+Tooltip_EN = {
     Tooltip_FactorVIII = "Kit for the administration of factor VIII, needed for blood coagulation.<br>Instructions for preparation and administration are included in the package.",
+    Tooltip_Achillea = "Bandage with a decoction of yarrow helps to treat bleeding."
 }

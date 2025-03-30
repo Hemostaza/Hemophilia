@@ -20,10 +20,10 @@ local function setWoundTime(bodyPart, randomTime)
 end
 
 local function isWounded(bodyPart)
-	if bodyPart:getScratchTime() > 0 then
+    if bodyPart:getScratchTime() > 0 then
         return true;
     end
-	if bodyPart:getCutTime() > 0 then
+    if bodyPart:getCutTime() > 0 then
         return true;
     end
     if bodyPart:getBiteTime() > 0 then
@@ -32,7 +32,22 @@ local function isWounded(bodyPart)
     if bodyPart:getDeepWoundTime() > 0 then
         return true;
     end
-	return false
+    return false
+end
+
+local function AchilleaBandageOn(bodyParts)
+    for bodyPartIndex = 0, bodyParts:size() - 1 do
+        local bodyPart = bodyParts:get(bodyPartIndex)
+        -- sprawdź czy jest obrażenie jakeis na konczynie
+        if isWounded(bodyPart) then
+            if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
+                local rand = ZombRand(1, 100);
+                local bleedingTime = bodyPart:getBleedingTime() - rand/150;
+                bodyPart:setBleedingTime(bleedingTime)
+                setWoundTime(bodyPart, -rand/150);
+            end
+        end
+    end
 end
 
 local function hemophiliaBleedingTime()
@@ -57,45 +72,58 @@ local function hemophiliaBleedingTime()
             if player:HasTrait("HemophiliaSevere") then
                 multipler = 35;
             end
+
+            if player:isFemale() then
+                multipler = multipler * 2;
+                --print("Ło kurwa baba lol");
+            end
             -- print(bodyParts:size());
             -- sprawdź najpierw czy pędzel w ogóle krwawi kurwa mać reloaduj sie
             for bodyPartIndex = 0, bodyParts:size() - 1 do
                 local bodyPart = bodyParts:get(bodyPartIndex)
-                --sprawdź czy jest obrażenie jakeis na konczynie
+                -- sprawdź czy jest obrażenie jakeis na konczynie
                 if isWounded(bodyPart) then
-                    --sprawdź czy już nie krwawi
+                    
+                    if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
+                        --print("bandaż z chujem");
+                        multipler = multipler * 3;
+                    end
+                    -- jak ma bandaż z krwawnika to mnozy multipler za 3
+
+                    -- sprawdź czy już nie krwawi
                     if (bodyPart:getBleedingTime() <= 0) then
                         -- print("Uszkodzenie kutasa poziom over 9999");
                         -- Możliwość ponownego otwarcia ran i chuj xD
                         local rand = ZombRand(-100, 100);
-                        --print("randomowa wartosc do otwarcia rany xD ",rand)
+                        -- print("randomowa wartosc do otwarcia rany xD ",rand)
                         if rand >= multipler then
-                            --print("Ponowne krawienie łooo ", rand);
-                            --bodyPart:setBleeding(true);
-                            bodyPart:setBleedingTime(25/rand);
+                            -- print("Ponowne krawienie łooo ", rand);
+                            -- bodyPart:setBleeding(true);
+                            bodyPart:setBleedingTime(25 / rand);
                         end
                     end
-
-                end
-                -- Dopiero jak krwawi to zacznij rozkminiaj czas krwawienia kurwiu
-                if bodyPart:getBleedingTime() > 0 then
-                    -- losowa liczba dodana do czasu krwawienia podzielona przez mocność hemofilii
-                    local rand = ZombRand(3, 15) / multipler;
-                    --print("Wydłużenie czasu krwawienia o ", rand)
-                    local bleedingTime = bodyPart:getBleedingTime() + rand;
-                    -- ustawienie tego w kończynie
-                    bodyPart:setBleedingTime(bleedingTime)
-                    --print("wydłużenie czasu gojenia się rany o ", rand)
-                    setWoundTime(bodyPart, rand);
+                    -- Dopiero jak krwawi to zacznij rozkminiaj czas krwawienia kurwiu
+                    if bodyPart:getBleedingTime() > 0 then
+                        -- losowa liczba dodana do czasu krwawienia podzielona przez mocność hemofilii
+                        local rand = ZombRand(3, 15) / multipler;
+                        -- print("Wydłużenie czasu krwawienia o ", rand)
+                        local bleedingTime = bodyPart:getBleedingTime() + rand;
+                        -- ustawienie tego w kończynie
+                        bodyPart:setBleedingTime(bleedingTime)
+                        -- print("wydłużenie czasu gojenia się rany o ", rand)
+                        setWoundTime(bodyPart, rand);
+                    end
                 end
             end
+        else
+            AchilleaBandageOn(player:getBodyDamage():getBodyParts());
         end
     end
 end
 
 function takeFactorVIII(player)
     local playerdata = player:getModData();
-    playerdata.FactorVIIIHours = ZombRand(9,12);
+    playerdata.FactorVIIIHours = ZombRand(22, 26);
 end
 
 local function factorreduction()
@@ -111,7 +139,7 @@ local function factorreduction()
                 return
             end
             if factorVIIIHours > 0 then
-                --print("ile ma czynnika", factorVIIIHours);
+                -- print("ile ma czynnika", factorVIIIHours);
                 factorVIIIHours = factorVIIIHours - 1;
                 player:getModData().FactorVIIIHours = factorVIIIHours;
             end
@@ -130,7 +158,7 @@ local function initialize(playerIndex, player)
     local getOnStart
     if player:HasTrait("HemophiliaSevere") or player:HasTrait("HemophiliaLite") then
         if playerdata.FactorVIIIHours == nil then
-            --print("Factor hours = null ")
+            -- print("Factor hours = null ")
             playerdata.FactorVIIIHours = 0
             local inventory = player:getInventory();
             inventory:addItem(inventory:AddItem("Hemophilia.FactorVIII"));
@@ -138,7 +166,7 @@ local function initialize(playerIndex, player)
                 inventory:addItem(inventory:AddItem("Hemophilia.FactorVIII"));
             end
         end
-        --print("Factor hours ",playerdata.FactorVIIIHours)
+        -- print("Factor hours ",playerdata.FactorVIIIHours)
     end
     -- end
 end

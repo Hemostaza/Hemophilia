@@ -1,3 +1,7 @@
 ItemName_RU = {
-    ItemName_Hemophilia.FactorVIII = "С‘актор VIII".
+    ItemName_Hemophilia.FactorVIII = "С‘актор VIII",
+    ItemName_Hemophilia.Achillea = "“ыс€челистник",
+    ItemName_Hemophilia.AchilleaBandage = "ѕов€зка, пропитанна€ отваром тыс€челистника",
+    ItemName_Hemophilia.WaterPotAchillea = "√оршок с отваром тыс€челистника",
+    ItemName_Hemophilia.WaterSaucepanAchillea = " астрюл€ с отваром тыс€челистника",
 }

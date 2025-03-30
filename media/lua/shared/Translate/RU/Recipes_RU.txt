@@ -1,0 +1,5 @@
+Recipes_RU = {
+	Recipe_PlaceAchilleainCookingPot = "ѕоместите тыс€челистник в горшок.",
+	Recipe_PlaceAchilleainSaucepan = "ѕоложите тыс€челистник в кастрюлю.",
+    Recipe_ApplyAchillea = "—мочите пов€зку отваром тыс€челистника.",
+}

@@ -1,3 +1,7 @@
 ItemName_RU = {
-    ItemName_Hemophilia.FactorVIII = "‘Фактор VIII".
+    ItemName_Hemophilia.FactorVIII = "‘Фактор VIII",
+    ItemName_Hemophilia.Achillea = "Тысячелистник",
+    ItemName_Hemophilia.AchilleaBandage = "Повязка, пропитанная отваром тысячелистника",
+    ItemName_Hemophilia.WaterPotAchillea = "Горшок с отваром тысячелистника",
+    ItemName_Hemophilia.WaterSaucepanAchillea = "Кастрюля с отваром тысячелистника",
 }

@@ -1,3 +1,7 @@
 ItemName_PL = {
-    ItemName_Hemophilia.FactorVIII = "Czynnik VIII".
+    ItemName_Hemophilia.FactorVIII = "Czynnik VIII",
+    ItemName_Hemophilia.Achillea = "Krwawnik pospolity",
+    ItemName_Hemophilia.AchilleaBandage = "Bandaż nasączony wywarem z krwawnika",
+    ItemName_Hemophilia.WaterPotAchillea = "Garnek z wywarem z krwawnika",
+    ItemName_Hemophilia.WaterSaucepanAchillea = "Rondel z wywarem z krwawnika",
 }

@@ -1,0 +1,5 @@
+Recipes_PL = {
+	Recipe_PlaceAchilleainCookingPot = "W³ó¿ krwawnik do garnka",
+	Recipe_PlaceAchilleainSaucepan = "W³ó¿ krwawnik do rondla",
+    Recipe_ApplyAchillea = "Nas¹cz banda¿ wywarem z krwawnika",
+}

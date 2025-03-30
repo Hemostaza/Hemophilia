@@ -1,3 +1,7 @@
-ItemName_PL = {
+ItemName_EN = {
     ItemName_Hemophilia.FactorVIII = "Factor VIII".
+    ItemName_Hemophilia.Achillea = "Common yarrow",
+    ItemName_Hemophilia.AchilleaBandage = "Bandage soaked in yarrow decoction",
+    ItemName_Hemophilia.WaterPotAchillea = "Pot with yarrow decoction",
+    ItemName_Hemophilia.WaterSaucepanAchillea = "Saucepan with yarrow decoction",
 }

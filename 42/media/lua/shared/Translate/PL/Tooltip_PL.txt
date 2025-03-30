@@ -1,3 +1,4 @@
 Tooltip_PL = {
     Tooltip_FactorVIII = "Zestaw do podania czynnika VIII, potrzebnego przy krzepnięciu krwii.<br>W opakowaniu jest instrukcja przygotowania i podania.",
+    Tooltip_Achillea = "Bandaż z wywarem z krwawnika pomaga w leczeniu krwawienia."
 }

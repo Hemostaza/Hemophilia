@@ -1,0 +1,118 @@
+module Hemophilia{
+imports{
+	Base
+	}
+
+	item Achillea
+    {
+        DisplayCategory = FirstAid,
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	=	Achillea,
+        Icon	=	achilleaplant,
+        Tooltip = Tooltip_Plantain,
+        WorldStaticModel = MedicinalHerbsLeafBundle,
+    }
+
+	item AchilleaBandage
+	{
+	    DisplayCategory = FirstAid,
+		Count	=	1,
+		Weight	=	0.1,
+		AlwaysWelcomeGift	=	true,
+		Type	=	Normal,
+		DisplayName	=	Bandage with Achillea,
+		ReplaceOnUse    =   BandageDirty,
+		Icon	=	Bandage,
+		CanBandage	=	true,
+		BandagePower    =   4,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+	}
+
+	item WaterPotAchillea
+	{
+		DisplayName = Cooking Pot with Achillea,
+		DisplayCategory = Water,
+		Type = Drainable,
+		Weight = 3,
+		Icon = Pot_Water,
+		CanStoreWater = false,
+		FillFromDispenserSound = GetWaterFromDispenserMetalBig,
+		FillFromTapSound = GetWaterFromTapMetalBig,
+		IsCookable = TRUE,
+		IsWaterSource = false,
+		ReplaceOnDeplete = Pot,
+		ReplaceOnUseOn = WaterSource-WaterPot,
+		UseDelta = 0.32,
+		UseWhileEquipped = FALSE,
+		StaticModel = CookingPot,
+		WorldStaticModel = CookingPotWater_Ground,
+		Tags = HasMetal,
+	}
+
+	item WaterSaucepanAchillea
+	{
+		DisplayName = Saucepan with Achillea,
+		DisplayCategory = Water,
+		Type = Drainable,
+		Weight = 2,
+		Icon = SaucepanEmpty,
+		CanStoreWater = false,
+		ConditionMax = 5,
+		EatType = Kettle,
+		FillFromDispenserSound = GetWaterFromDispenserMetalMedium,
+		FillFromTapSound = GetWaterFromTapMetalMedium,
+		IsCookable = TRUE,
+		IsWaterSource = false,
+		ReplaceOnDeplete = Saucepan,
+		ReplaceOnUseOn = WaterSource-WaterSaucepan,
+		UseDelta = 0.4,
+		UseWhileEquipped = FALSE,
+		StaticModel = SaucePan,
+		WorldStaticModel = WaterSaucepan,
+		Tags = HasMetal,
+	}
+
+	recipe PlaceAchilleainCookingPot
+	{
+	   Achillea=5,
+	   destroy WaterPot,
+
+	   Result:WaterPotAchillea,
+	   Time:50.0,
+	}
+
+    recipe PlaceAchilleainSaucepan
+	{
+	   Achillea=5,
+	   destroy WaterSaucepan,
+
+	   Result:WaterSaucepanAchillea,
+	   Time:50.0,
+	}
+
+	recipe ApplyAchillea
+    {
+        destroy Bandage,
+        WaterPotAchillea;5,
+        CanBeDoneFromFloor:true,
+        Result:AchilleaBandage,
+        Time:100.0,
+        Heat:-0.22,
+        Category:Health,
+    }
+
+	recipe ApplyAchillea
+    {
+        destroy Bandage,
+        WaterSaucepanAchillea;5,
+        CanBeDoneFromFloor:true,
+        Result:AchilleaBandage,
+        Time:100.0,
+        Heat:-0.22,
+        Category:Health,
+    }
+
+}
