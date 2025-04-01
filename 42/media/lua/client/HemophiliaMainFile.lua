@@ -40,7 +40,8 @@ local function AchilleaBandageOn(bodyParts)
         local bodyPart = bodyParts:get(bodyPartIndex)
         -- sprawdź czy jest obrażenie jakeis na konczynie
         if isWounded(bodyPart) then
-            if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
+            --if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
+            if true then
                 local rand = ZombRand(1, 100);
                 local bleedingTime = bodyPart:getBleedingTime() - rand / 150;
                 bodyPart:setBleedingTime(bleedingTime)
@@ -84,10 +85,10 @@ local function hemophiliaBleedingTime()
                 -- sprawdź czy jest obrażenie jakeis na konczynie
                 if isWounded(bodyPart) then
 
-                    if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
+                    --if bodyPart:getBandageType() == "Hemophilia.AchilleaBandage" and bodyPart:isBandageDirty() == false then
                         -- print("bandaż z chujem");
-                        multipler = multipler * 3;
-                    end
+                    --    multipler = multipler * 3;
+                    --end
                     -- jak ma bandaż z krwawnika to mnozy multipler za 3
 
                     -- sprawdź czy już nie krwawi
@@ -119,7 +120,7 @@ local function hemophiliaBleedingTime()
                 end
             end
         else
-            AchilleaBandageOn(player:getBodyDamage():getBodyParts());
+        --    AchilleaBandageOn(player:getBodyDamage():getBodyParts());
         end
     end
 end
